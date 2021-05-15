@@ -1,5 +1,5 @@
 <?php
-require('config.php');
+require('../config.php');
 
 if ( empty($_SESSION[$AUTH_USER['session']]) ){
     // not authenticated
@@ -8,7 +8,7 @@ if ( empty($_SESSION[$AUTH_USER['session']]) ){
         if ($_POST['user']==$AUTH_USER['user'] && $_POST['pass']==$AUTH_USER['pass']) {
             // correct data
             $_SESSION[$AUTH_USER['session']] = $AUTH_USER['user'];
-            header('Location: /login.php');
+            header('Location: /auth/login.php');
         }
         else {
             // incorrect data
@@ -28,7 +28,7 @@ if ( empty($_SESSION[$AUTH_USER['session']]) ){
 else {
     ?>
         You are logged in as <?= $_SESSION[$AUTH_USER['session']]?>!<br/>
-        Click <a href="/logout.php">here</a> for logout.
+        Click <a href="/auth/logout.php">here</a> for logout.
     <?php
 }
 ?>
