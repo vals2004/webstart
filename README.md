@@ -1,42 +1,43 @@
 # webstart
 
-0) подготовка
-  - установить docker
-  - установить docker-compose 
-  - установить git
+0) preparation
+  - install git
+  - install docker
+  - install docker-compose 
   
-1) сборка окружения
-  - клонируем проект ???. дополнительно можно указать имя папки проекта вместо имени репозитория
+1) build environment
+  - clone project ???. addtional you can set name of folder instead of repository
     git clone <URL> [path]
-  - переходим в папку
-  - копируем файл .env.sample в .env
-  - редактируем .env (в первую очередь чтобы знать какой порт использовать и избежать конфликтов)
-    * HTTP_PORT - на этом порту будет доступен сайт (http://localhost:{HTTP_PORT})
-    * MYSQL_PORT - порт mysql, если будет необходимость использовать внешний доступ
-    * PASSWORD - пароль пользователей mysql
-  - выполняем непосредственно сборку окружения (запускаем в папке проекта!!!)
+  - cd [part]
+  - copy .env.sample into .env
+  - edit .env (you should set unused ports to prevent conflicts)
+    * HTTP_PORT - site will be available on this port (http://localhost:{HTTP_PORT})
+    * MYSQL_PORT - port for mysql, if you will need to use MySQL WorkBench for example
+    * PASSWORD - password for mysql
+  - build docker images (execute in folder of project!!!)
     # docker-compose build
-    сборка может занять до 10 минут
+    (build process can be done in 10 minutes)
   
- 2) запуск окружения
+ 2) execute project environment (docker)
     # docker-compose up -d
    
- 3) взаимодействие через браузер:
-    - для доступа к сайту в браузере обращаемся к localhost и указываем порт из .env (по умолчанию 9080):
+ 3) access to site:
+    - enter in address line of browser (port from .env, 9080 by default):
       # http://localhost:9080
-    - для доступа к phpMyAdmin добавляем путь  /phpmyadmin/ и получаем (слеш в конце обязательно) 
+    - access to phpMyAdmin - /phpmyadmin/ ('/' at the end is required) 
       # http://localhost:9080/phpmyadmin/
       
- 4) создание сайта
-    - DocumentRoot сайта находится в папке web
-    - index.php по умолчанию содержит единственную конструкцию phpmyadmin();
+ 4) create site
+    - DocumentRoot is 'web'
+    - index.php contain only phpmyadmin();
     
- 5) подключение к базе данных
-    - можно использовать PDO или mysqli
-    - пример для mysqli находится в файле mysql.php
-      * подключение к базе данных
-      * создание таблицы
-      * вставка и выборка данных
+ 5) connect to DB
+    - you can use PDO or mysqli
+    - example for mysqli is in mysql.php
+      * connect to DB
+      * create table
+      * insert and delete table
+      * drop table
       
       
     
